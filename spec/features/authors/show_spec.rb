@@ -32,6 +32,17 @@ RSpec.describe 'Author Show Page' do
             click_link "All Books"
             expect(current_path).to eq("/books")
         end
+
+        it "displays link to authors books index page" do
+            author = Author.create!(name: "Boo", age: 5, alive: false)
+            book_1 = author.books.create!(title: 'Lala Land', page_count: 100, fiction: true)
+            book_2 = author.books.create!(title: 'Volcano Island', page_count: 200, fiction: false)
+            book_3 = author.books.create!(title: 'Cool Island', page_count: 300, fiction: false)
+
+            visit "/authors/#{author.id}"
+            click_link "View Authors Books"
+            expect(current_path).to eq("/authors/#{author.id}/books")
+        end
         
     end
 end
