@@ -16,7 +16,7 @@ RSpec.describe 'Book Index Page' do
         #book titles
         expect(page).to have_content('Lala Land')
         expect(page).to have_content('Volcano Island')
-        expect(page).to have_content('Voayger')
+        expect(page).to have_content('Voyager')
         expect(page).to have_content('Miss Patty')
         #book page counts
         expect(page).to have_content('Page Count: 100')
