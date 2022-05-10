@@ -163,6 +163,8 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.11.0)
+    rspec_boolean (0.0.7)
+      rspec (~> 3.3)
     ruby_dep (1.5.0)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
@@ -224,6 +226,7 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.7, >= 5.2.7.1)
   rspec-rails
+  rspec_boolean
   sass-rails (~> 5.0)
   shoulda-matchers
   simplecov
