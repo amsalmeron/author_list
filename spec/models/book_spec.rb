@@ -10,7 +10,6 @@ RSpec.describe Book, type: :model do
         it { should validate_presence_of(:title)}
         it { should validate_presence_of(:page_count)}
         it { should validate_numericality_of(:page_count)}
-        it { should validate_presence_of(:fiction)}
     end
     
     

@@ -243,12 +243,32 @@
           1,
           null,
           1,
+          1,
           null
         ]
       },
       "/Users/antoniosalmeron/turing/round2module/projects/author_list/app/helpers/application_helper.rb": {
         "lines": [
           1,
+          null
+        ]
+      },
+      "/Users/antoniosalmeron/turing/round2module/projects/author_list/spec/features/authors/show_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
           null
         ]
       },
@@ -305,7 +325,6 @@
           2,
           2,
           2,
-          2,
           null,
           null,
           null,
@@ -332,6 +351,10 @@
           1,
           null,
           null,
+          1,
+          1,
+          null,
+          null,
           null
         ]
       },
@@ -342,6 +365,6 @@
         ]
       }
     },
-    "timestamp": 1652216183
+    "timestamp": 1652218213
   }
 }
