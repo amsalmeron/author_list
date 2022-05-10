@@ -14,5 +14,11 @@ RSpec.describe 'Book Show Page' do
         #book fiction vs non-ficiton
         expect(page).to have_content('Fiction: true', count: 1)
     end
+
+    it "displays link to authors index page" do
+        visit "/books"
+        click_link "All Authors"
+        expect(current_path).to eq("/authors")
+    end
     
 end

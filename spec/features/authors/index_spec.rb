@@ -15,5 +15,16 @@ RSpec.describe 'Author Index Page' do
         expect('Cassandra').to appear_before('Larry')
         expect('Larry').to appear_before('Antonio')
     end
+
+    it "displays link to books index page" do
+        author = Author.create!(name: "Boo", age: 5, alive: false)
+        book_1 = author.books.create!(title: 'Lala Land', page_count: 100, fiction: true)
+        book_2 = author.books.create!(title: 'Volcano Island', page_count: 200, fiction: false)
+        book_3 = author.books.create!(title: 'Cool Island', page_count: 300, fiction: false)
+
+        visit "/authors"
+        click_link "All Books"
+        expect(current_path).to eq("/books")
+    end
     
 end
