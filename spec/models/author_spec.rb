@@ -13,7 +13,7 @@ RSpec.describe Author, type: :model do
     end
 
     describe "class methods" do
-        describe "#order_created" do
+        describe ".order_created" do
             it "orders authors by most recently created first" do
                 author_1 = Author.create!(name: 'Antonio', age: 1, alive: false)
                 author_2 = Author.create!(name: 'Larry', age: 2, alive: true)

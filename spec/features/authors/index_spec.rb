@@ -11,6 +11,9 @@ RSpec.describe 'Author Index Page' do
         expect(page).to have_content('Antonio')
         expect(page).to have_content('Larry')
         expect(page).to have_content('Cassandra')
+
+        expect('Cassandra').to appear_before('Larry')
+        expect('Larry').to appear_before('Antonio')
     end
     
 end
