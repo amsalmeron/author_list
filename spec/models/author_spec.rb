@@ -22,7 +22,18 @@ RSpec.describe Author, type: :model do
                 authors = Author.all
                 expect(authors.order_created).to eq([author_3,author_2,author_1])
             end
-            
+        end        
+    end
+
+    describe "instance methods" do
+        describe "#book_count" do
+            it "counts total number of books per author" do
+                author_1 = Author.create!(name: 'Antonio', age: 1, alive: false)
+                book_1 = author_1.books.create!(title: 'Lala Land', page_count: 100, fiction: true)
+                book_2 = author_1.books.create!(title: 'Volcano Island', page_count: 200, fiction: false)
+
+                expect(author_1.book_count).to eq(2)
+            end
         end        
     end
     
