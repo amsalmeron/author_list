@@ -11,10 +11,24 @@ RSpec.describe 'Author Index Page' do
         expect(page).to have_content('Antonio')
         expect(page).to have_content('Larry')
         expect(page).to have_content('Cassandra')
+    end
+
+    it "displays created at attribute and lists authors in desc order created (most recent first)" do
+        author_1 = Author.create!(name: 'Antonio', age: 1, alive: false)
+        author_2 = Author.create!(name: 'Larry', age: 2, alive: true)
+        author_3 = Author.create!(name: 'Cassandra', age: 3, alive: true)
+        
+        visit '/authors'
+
+        expect(page).to have_content(author_1.created_at)
+        expect(page).to have_content(author_3.created_at)
+        expect(page).to have_content(author_2.created_at)
+
 
         expect('Cassandra').to appear_before('Larry')
         expect('Larry').to appear_before('Antonio')
     end
+    
 
     it "displays link to books index page" do
         author = Author.create!(name: "Boo", age: 5, alive: false)

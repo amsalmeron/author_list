@@ -1,8 +1,8 @@
 <h1>Books Homepage</h1>
-
+<h3>All Books</h3><hr>
 <% @books.each do |book| %>
     <p>Title: <%= book.title %></p>
     <p>Page Count: <%= book.page_count %></p>
-    <p>Fiction: <%= book.fiction %></p>
+    <p>Fiction: <%= book.fiction %></p><hr>
 <% end %>
 
