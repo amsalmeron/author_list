@@ -10,6 +10,8 @@ RSpec.describe Author, type: :model do
         it { should validate_presence_of(:name) }
         it { should validate_presence_of(:age) }
         it { should validate_numericality_of(:age) }
+        it { should allow_value(true).for(:alive) }
+        it { should allow_value(false).for(:alive) }
     end
 
     describe "class methods" do
@@ -19,8 +21,7 @@ RSpec.describe Author, type: :model do
                 author_2 = Author.create!(name: 'Larry', age: 2, alive: true)
                 author_3 = Author.create!(name: 'Cassandra', age: 3, alive: true)
 
-                authors = Author.all
-                expect(authors.order_created).to eq([author_3,author_2,author_1])
+                expect(Author.order_created).to eq([author_3,author_2,author_1])
             end
         end        
     end

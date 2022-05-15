@@ -1,6 +1,6 @@
 class Book < ApplicationRecord
     
-    validates_presence_of :title
+    validates :title, presence: true
     validates :page_count, presence: true, numericality: true
     validates :fiction, inclusion: { in: [true, false]}
     

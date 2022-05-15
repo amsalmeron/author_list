@@ -1,0 +1,11 @@
+<h1>Add New Author</h1>
+<%= form_with url: "/authors" , method: :post, local: true do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+    <%= f.label :age %>
+    <%= f.text_field :age %><br>
+    <%= f.label :alive %>
+    <%= f.check_box :alive %><br>
+
+    <%= f.submit 'Submit'%>
+<% end %>

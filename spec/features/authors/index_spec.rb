@@ -24,7 +24,6 @@ RSpec.describe 'Author Index Page' do
         expect(page).to have_content(author_3.created_at)
         expect(page).to have_content(author_2.created_at)
 
-
         expect('Cassandra').to appear_before('Larry')
         expect('Larry').to appear_before('Antonio')
     end

@@ -1,10 +1,10 @@
 class Author < ApplicationRecord
 
-    validates_presence_of :name
+    validates :name, presence: true
     validates :age, presence: true, numericality: true
     validates :alive, inclusion: { in: [true, false] }
     
-    has_many :books
+    has_many :books, dependent: :destroy
 
     def self.order_created
         order(created_at: :desc)
