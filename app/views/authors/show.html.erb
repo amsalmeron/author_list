@@ -4,3 +4,4 @@
 <h3>Alive: <%= @author.alive %></h3>
 <h3>Book Count: <%= @author.book_count %></h3>
 <h3><%= link_to "View Authors Books", "/authors/#{@author.id}/books" %></h3>
+<h3><%= link_to "Update Author", "/authors/#{@author.id}/edit" %></h3>

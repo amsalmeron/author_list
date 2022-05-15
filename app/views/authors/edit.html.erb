@@ -1,0 +1,13 @@
+<h1>Edit Author</h1>
+<%= form_with url: "/authors/#{@author.id}", method: :patch, local: true do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :age %>
+  <%= f.number_field :age %>
+
+  <%= f.label :alive %>
+  <%= f.check_box :alive %>
+
+  <%= f.submit "submit"%>
+<% end %>
