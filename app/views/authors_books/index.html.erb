@@ -6,3 +6,5 @@
     <p>Page Count: <%= book.page_count %></p>
     <p>Fiction: <%= book.fiction %></p><hr>
 <% end%>
+
+<%= link_to "Add New Book", "/authors/#{@author.id}/books/new" %>

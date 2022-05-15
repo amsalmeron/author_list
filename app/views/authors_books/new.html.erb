@@ -1,0 +1,11 @@
+<h1>Add New Book</h1>
+<%= form_with url: "/authors/#{@author.id}/books" , method: :post, local: true do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %><br>
+    <%= f.label :page_count %>
+    <%= f.text_field :page_count %><br>
+    <%= f.label :fiction %>
+    <%= f.text_field :fiction %><br>
+
+    <%= f.submit 'Submit'%>
+<% end %>
