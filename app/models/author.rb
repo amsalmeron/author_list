@@ -18,5 +18,4 @@ class Author < ApplicationRecord
         books.alphabetize_books(sort)
     end
     
-    
 end

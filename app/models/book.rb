@@ -13,4 +13,8 @@ class Book < ApplicationRecord
             Book.all
         end
     end
+
+    def self.page_max(max)
+        where("page_count <= ?", max)
+    end
 end

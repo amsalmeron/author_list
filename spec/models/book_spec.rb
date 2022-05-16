@@ -28,7 +28,23 @@ RSpec.describe Book, type: :model do
                 expect(Book.all).to eq([book_1, book_2, book_3, book_4])
                 expect(Book.alphabetize_books('true')).to eq([book_1, book_4, book_2, book_3])
             end
-        end  
+        end
+
+        describe ".page_max" do
+            it "only shows books under page count threshold" do
+                author_1 = Author.create!(name: 'Antonio', age: 1, alive: false)
+                author_2 = Author.create!(name: 'Larry', age: 2, alive: true)
+
+                book_1 = author_1.books.create!(title: 'Lala Land', page_count: 100, fiction: true)
+                book_2 = author_1.books.create!(title: 'Volcano Island', page_count: 300, fiction: false)
+                book_3 = author_2.books.create!(title: 'Voyager', page_count: 200, fiction: false)
+                book_4 = author_2.books.create!(title: 'Miss Patty', page_count: 400, fiction: true)
+
+                expect(Book.page_max(200)).to eq([book_1, book_3])
+            end
+            
+        end
+        
     end
     
     

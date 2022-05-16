@@ -49,6 +49,4 @@ RSpec.describe Author, type: :model do
             end
         end
     end
-    
-    
 end
