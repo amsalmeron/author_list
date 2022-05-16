@@ -4,6 +4,8 @@ RSpec.describe "Create a new Author link and form" do
     it "has a link to create new author on index page" do
         visit '/authors'
         expect(page).to have_link("New Author")
+        click_link 'New Author'
+        expect(current_path).to eq('/authors/new')
     end
 
     it "has a form on author new page" do
@@ -17,10 +19,9 @@ RSpec.describe "Create a new Author link and form" do
         visit '/authors/new'
         fill_in :name, with: "Jerry"
         fill_in :age, with: 55
-        check 'Alive'
+        check :alive
         click_button 'Submit'
         expect(current_path).to  eq('/authors')
         expect(page).to  have_content("Jerry")
     end
-    
 end

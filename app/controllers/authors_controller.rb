@@ -9,10 +9,11 @@ class AuthorsController < ApplicationController
     end
     
     def new
-        # @author = Author.find(params[:id])
+    
     end
     
     def create
+        #Artist.create(name: params[:name])
         @author = Author.create(author_params)
         redirect_to authors_path
     end
@@ -29,7 +30,7 @@ class AuthorsController < ApplicationController
     
     private
 
-    def author_params
-        params.permit(:id, :name, :age, :alive)
-    end
+        def author_params
+            params.permit(:name, :age, :alive)
+        end
 end
