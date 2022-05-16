@@ -68,5 +68,20 @@ RSpec.describe 'Book Index Page' do
         expect(page).to have_content("Jungle Book") 
         expect(page).to have_content("400") 
     end
+
+    it "has link to delete next to each book" do
+        author_1 = Author.create!(name: 'Antonio', age: 1, alive: false)
+        author_2 = Author.create!(name: 'Larry', age: 2, alive: true)
+        book_1 = author_1.books.create!(title: 'Lala Land', page_count: 100, fiction: true)
+        book_2 = author_1.books.create!(title: 'Volcano Island', page_count: 200, fiction: true)
+        book_3 = author_2.books.create!(title: 'Voyager', page_count: 300, fiction: true)
+        visit '/books'
+
+        click_link "Delete #{book_1.title}"
+        expect(current_path).to eq("/books")
+        expect(page).to_not have_content("Lala Land")
+        expect(page).to have_content("Volcano Island")
+        expect(page).to have_content("Voyager")
+    end
     
 end
