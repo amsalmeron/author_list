@@ -3,6 +3,7 @@
 <% @books.each do |book| %>
     <p>Title: <%= book.title %></p>
     <p>Page Count: <%= book.page_count %></p>
-    <p>Fiction: <%= book.fiction %></p><hr>
+    <p>Fiction: <%= book.fiction %></p>
+    <p><%= link_to "Update #{book.title}", "/books/#{book.id}/edit" %></p><hr>
 <% end %>
 
