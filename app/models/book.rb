@@ -5,4 +5,8 @@ class Book < ApplicationRecord
     validates :fiction, inclusion: { in: [true, false]}
     
     belongs_to :author
+
+    def self.alphabetize_books
+        order(:title)
+    end
 end

@@ -15,7 +15,7 @@ class Author < ApplicationRecord
     end
 
     def alphabetize
-        books.order(:title)
+        books.alphabetize_books
     end
     
     
