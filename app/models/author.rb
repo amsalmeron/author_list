@@ -13,5 +13,10 @@ class Author < ApplicationRecord
     def book_count
         books.count
     end
+
+    def alphabetize
+        books.order(:title)
+    end
+    
     
 end

@@ -35,7 +35,19 @@ RSpec.describe Author, type: :model do
 
                 expect(author_1.book_count).to eq(2)
             end
-        end        
+        end
+        
+        describe "#alphabetize" do
+            it "alphabetizes authors books" do
+                author_1 = Author.create!(name: 'Antonio', age: 1, alive: false)
+                book_1 = author_1.books.create!(title: 'Lala Land', page_count: 100, fiction: true)
+                book_2 = author_1.books.create!(title: 'Volcano Island', page_count: 200, fiction: false)
+                book_3 = author_1.books.create!(title: 'Bitcoin Standard', page_count: 200, fiction: false)
+                book_4 = author_1.books.create!(title: 'Alcatraz', page_count: 200, fiction: false)
+                expect(author_1.books).to eq([book_1, book_2, book_3, book_4])
+                expect(author_1.alphabetize).to eq([book_4, book_3, book_1, book_2])
+            end
+        end
     end
     
     
