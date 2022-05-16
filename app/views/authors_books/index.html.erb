@@ -1,18 +1,10 @@
 <h1><%= @author.name %>'s Book Show Page</h1>
 
 <h3>Books</h3><hr>
-<% if params[:alpha] == "true" %>
-    <% @author.alphabetize.each do |book| %>
+    <% @author.alphabetize(params[:alpha]).each do |book| %>
         <p>Title: <%= book.title %></p>
         <p>Page Count: <%= book.page_count %></p>
         <p>Fiction: <%= book.fiction %></p><hr>
     <% end%>
-<% else%>
-    <% @author.books.each do |book| %>
-        <p>Title: <%= book.title %></p>
-        <p>Page Count: <%= book.page_count %></p>
-        <p>Fiction: <%= book.fiction %></p><hr>
-    <% end%>
-<% end%>
 <%= link_to "Alphabetize Books", "/authors/#{@author.id}/books?alpha=true" %>
 <%= link_to "Add New Book", "/authors/#{@author.id}/books/new" %>

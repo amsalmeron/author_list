@@ -26,7 +26,7 @@ RSpec.describe Book, type: :model do
                 book_4 = author_2.books.create!(title: 'Miss Patty', page_count: 400, fiction: true)
 
                 expect(Book.all).to eq([book_1, book_2, book_3, book_4])
-                expect(Book.alphabetize_books).to eq([book_1, book_4, book_2, book_3])
+                expect(Book.alphabetize_books('true')).to eq([book_1, book_4, book_2, book_3])
             end
         end  
     end

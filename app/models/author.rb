@@ -14,8 +14,8 @@ class Author < ApplicationRecord
         books.count
     end
 
-    def alphabetize
-        books.alphabetize_books
+    def alphabetize(sort)
+        books.alphabetize_books(sort)
     end
     
     
