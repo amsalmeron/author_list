@@ -3,5 +3,6 @@
 <h3>Age: <%= @author.age %></h3>
 <h3>Alive: <%= @author.alive %></h3>
 <h3>Book Count: <%= @author.book_count %></h3>
-<h3><%= link_to "View Authors Books", "/authors/#{@author.id}/books" %></h3>
-<h3><%= link_to "Update Author", "/authors/#{@author.id}/edit" %></h3>
+<h3><%= link_to "View Authors Books", "/authors/#{@author.id}/books", method: :get %></h3>
+<h3><%= link_to "Update Author", "/authors/#{@author.id}/edit", method: :get %></h3>
+<h3><%= link_to "Delete Author", "/authors/#{@author.id}", method: :delete %></h3>

@@ -47,7 +47,7 @@ RSpec.describe 'Book Index Page' do
     end
     
 
-    it "has link to edit book attributes" do
+    it "has link to update book attributes" do
         author_1 = Author.create!(name: 'Antonio', age: 1, alive: false)
         author_2 = Author.create!(name: 'Larry', age: 2, alive: true)
 

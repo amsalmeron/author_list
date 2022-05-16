@@ -27,6 +27,12 @@ class AuthorsController < ApplicationController
         author.update(author_params)
         redirect_to "/authors/#{author.id}"
     end
+
+    def destroy
+        Author.destroy(params[:id])
+        redirect_to authors_path
+    end
+    
     
     private
 
