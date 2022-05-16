@@ -59,7 +59,26 @@ RSpec.describe 'Author Index Page' do
         expect(current_path).to eq("/authors/#{author_1.id}")
         expect(page).to have_content("Goo goo")
         expect(page).to have_content("2")
+    end
 
+     it "contains a link to delete parent" do
+        author_1 = Author.create!(name: 'Antonio', age: 1, alive: false)
+        author_2 = Author.create!(name: 'Larry', age: 2, alive: true)
+        author_3 = Author.create!(name: 'Cassandra', age: 3, alive: true)
+        
+        visit '/authors'
+
+        expect(page).to have_content("Delete Antonio")
+        expect(page).to have_content("Delete Larry")
+        expect(page).to have_content("Delete Cassandra")
+        click_link "Delete Antonio"
+        expect(current_path).to eq("/authors")
+        expect(page).to_not have_content("Antonio")
+        expect(page).to have_content("Larry")
+        expect(page).to have_content("Cassandra")
+        click_link "Delete Cassandra"
+        expect(current_path).to eq("/authors")
+        expect(page).to have_content("Larry")
     end
     
 end

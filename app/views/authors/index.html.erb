@@ -3,7 +3,8 @@
 <% @authors.each do |author| %>
     <h3><%= author.name %></h3>
     <p>Added: <%= author.created_at %></p>
-    <p><%= link_to "Update #{author.name}", "/authors/#{author.id}/edit" %></p><hr>
+    <p><%= link_to "Update #{author.name}", "/authors/#{author.id}/edit", method: :get %></p><hr>
+    <p><%= link_to "Delete #{author.name}", "/authors/#{author.id}", method: :delete %></p><hr>
 <% end %>
 
 <%= link_to "New Author", "/authors/new" %>
