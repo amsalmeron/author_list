@@ -4,3 +4,4 @@
 <h3>Page Count: <%= @book.page_count %></h3>
 <h3>Fiction: <%= @book.fiction %></h3>
 <h3><%= button_to "Update", "/books/#{@book.id}/edit", method: :get %></h3>
+<h3><%= button_to "Delete Book", "/books/#{@book.id}", method: :delete %></h3>
