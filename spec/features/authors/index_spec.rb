@@ -40,4 +40,26 @@ RSpec.describe 'Author Index Page' do
         expect(current_path).to eq("/books")
     end
     
+    it "contains a link to update parent show page" do
+        author_1 = Author.create!(name: 'Antonio', age: 1, alive: false)
+        author_2 = Author.create!(name: 'Larry', age: 2, alive: true)
+        author_3 = Author.create!(name: 'Cassandra', age: 3, alive: true)
+        
+        visit '/authors'
+
+        expect(page).to have_content("Update Antonio")
+        expect(page).to have_content("Update Larry")
+        expect(page).to have_content("Update Cassandra")
+        click_link "Update Antonio"
+        expect(current_path).to eq("/authors/#{author_1.id}/edit")
+        fill_in :name, with: 'Goo goo'
+        fill_in :age, with: 2
+        check :alive
+        click_button 'Submit'
+        expect(current_path).to eq("/authors/#{author_1.id}")
+        expect(page).to have_content("Goo goo")
+        expect(page).to have_content("2")
+
+    end
+    
 end

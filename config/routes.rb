@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/', to: 'authors#index'
   get '/authors', to: 'authors#index'
   get '/authors/new', to: 'authors#new'
   get '/authors/:id', to: 'authors#show'

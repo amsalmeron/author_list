@@ -20,7 +20,7 @@ RSpec.describe 'Update authors attributes' do
         visit "/authors/#{author.id}/edit"
         fill_in :name, with: "Thomas W."
         fill_in :age, with: 30
-        click_button "submit"
+        click_button "Submit"
         expect(current_path).to eq("/authors/#{author.id}")
         expect(page).to have_content("Thomas W.") 
     end
