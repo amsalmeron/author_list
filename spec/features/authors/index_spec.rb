@@ -7,10 +7,15 @@ RSpec.describe 'Author Index Page' do
         author_3 = Author.create!(name: 'Cassandra', age: 3, alive: true)
         
         visit '/authors'
-
-        expect(page).to have_content('Antonio')
-        expect(page).to have_content('Larry')
-        expect(page).to have_content('Cassandra')
+        within "#author-Antonio" do
+            expect(page).to have_content('Antonio')
+        end
+        within "#author-Larry" do
+            expect(page).to have_content('Larry')
+        end
+        within "#author-Cassandra" do
+            expect(page).to have_content('Cassandra')
+        end
     end
 
     it "displays created at attribute and lists authors in desc order created (most recent first)" do
@@ -46,10 +51,15 @@ RSpec.describe 'Author Index Page' do
         author_3 = Author.create!(name: 'Cassandra', age: 3, alive: true)
         
         visit '/authors'
-
-        expect(page).to have_content("Update Antonio")
-        expect(page).to have_content("Update Larry")
-        expect(page).to have_content("Update Cassandra")
+        within "#author-Antonio" do
+            expect(page).to have_content("Update Antonio")
+        end
+        within "#author-Larry" do
+            expect(page).to have_content("Update Larry")
+        end
+        within "#author-Cassandra" do
+            expect(page).to have_content("Update Cassandra")
+        end
         click_link "Update Antonio"
         expect(current_path).to eq("/authors/#{author_1.id}/edit")
         fill_in :name, with: 'Goo goo'
@@ -67,10 +77,18 @@ RSpec.describe 'Author Index Page' do
         author_3 = Author.create!(name: 'Cassandra', age: 3, alive: true)
         
         visit '/authors'
+        within "#author-Antonio" do
+            expect(page).to have_content("Delete Antonio")
+        end
+        within "#author-Larry" do
+            expect(page).to have_content("Delete Larry")
+            expect(page).to_not have_content("Delete Antonio")
 
-        expect(page).to have_content("Delete Antonio")
-        expect(page).to have_content("Delete Larry")
-        expect(page).to have_content("Delete Cassandra")
+        end
+        within "#author-Cassandra" do
+            expect(page).to have_content("Delete Cassandra")
+            expect(page).to_not have_content("Delete Antonio")
+        end
         click_link "Delete Antonio"
         expect(current_path).to eq("/authors")
         expect(page).to_not have_content("Antonio")
@@ -79,6 +97,7 @@ RSpec.describe 'Author Index Page' do
         click_link "Delete Cassandra"
         expect(current_path).to eq("/authors")
         expect(page).to have_content("Larry")
+        expect(page).to_not have_content("Cassandra")
     end
     
 end

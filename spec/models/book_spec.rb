@@ -42,11 +42,6 @@ RSpec.describe Book, type: :model do
 
                 expect(Book.page_max(200)).to eq([book_1, book_3])
             end
-            
-        end
-        
-    end
-    
-    
-    
+        end 
+    end 
 end

@@ -7,11 +7,7 @@ class Book < ApplicationRecord
     belongs_to :author
 
     def self.alphabetize_books(sort)
-        if sort == 'true'
-            order(:title)
-        else
-            Book.all
-        end
+        sort == 'true' ? order(:title) : Book.all
     end
 
     def self.page_max(max)

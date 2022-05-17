@@ -13,7 +13,6 @@ class AuthorsController < ApplicationController
     end
     
     def create
-        #Artist.create(name: params[:name])
         @author = Author.create(author_params)
         redirect_to authors_path
     end

@@ -15,10 +15,7 @@ class AuthorsBooksController < ApplicationController
 
     private
 
-    def book_params
-        params.permit(:title, :page_count, :fiction, :author_id)
-    end
-    
-    
-    
+        def book_params
+            params.permit(:title, :page_count, :fiction, :author_id)
+        end
 end
