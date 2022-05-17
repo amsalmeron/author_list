@@ -10,6 +10,11 @@ class Author < ApplicationRecord
         order(created_at: :desc)
     end
 
+    def self.order_book_count
+        all.sort { |a, b| b.books.count <=> a.books.count   }    
+    end
+    
+
     def book_count
         books.count
     end

@@ -1,12 +1,28 @@
 <h1>List of Authors</h1>
 
-<% @authors.each do |author| %>
-    <div id="author-<%= author.name %>">
-        <h3><%= author.name %></h3>
-        <p>Added: <%= author.created_at %></p>
-        <p><%= link_to "Update #{author.name}", "/authors/#{author.id}/edit", method: :get %></p>
-        <p><%= link_to "Delete #{author.name}", "/authors/#{author.id}", method: :delete %></p><hr>
-    </div>
+<% if params[:book_count] == 'true' %>
+    <% @authors.order_book_count.each do |author| %>
+        <div id="author-<%= author.name %>">
+            <h3><%= author.name %></h3>
+            <h3>Book Count: <%= author.book_count %></h3>
+            <p>Added: <%= author.created_at %></p>
+            <p><%= link_to "Visit #{author.name} Show Page", "/authors/#{author.id}"%></p>
+            <p><%= link_to "Update #{author.name}", "/authors/#{author.id}/edit", method: :get %></p>
+            <p><%= link_to "Delete #{author.name}", "/authors/#{author.id}", method: :delete %></p><hr>
+        </div>
+    <% end %>
+<% else %>
+    <% @authors.each do |author| %>
+        <div id="author-<%= author.name %>">
+            <h3><%= author.name %></h3>
+            <h3>Book Count: <%= author.book_count %></h3>
+            <p>Added: <%= author.created_at %></p>
+            <p><%= link_to "Visit #{author.name} Show Page", "/authors/#{author.id}"%></p>
+            <p><%= link_to "Update #{author.name}", "/authors/#{author.id}/edit", method: :get %></p>
+            <p><%= link_to "Delete #{author.name}", "/authors/#{author.id}", method: :delete %></p><hr>
+        </div>
+    <% end %>
 <% end %>
 
+<%= link_to "Order Authors By Book Count", "/authors?book_count=true" %><br>
 <%= link_to "New Author", "/authors/new" %>

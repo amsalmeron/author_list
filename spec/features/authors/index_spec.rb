@@ -18,6 +18,15 @@ RSpec.describe 'Author Index Page' do
         end
     end
 
+    it "has author name as a link to show page" do
+        author_1 = Author.create!(name: 'Antonio', age: 1, alive: false)
+        
+        visit '/authors'
+        click_link 'Visit Antonio Show Page'
+        expect(current_path).to eq("/authors/#{author_1.id}")
+        
+    end
+
     it "displays created at attribute and lists authors in desc order created (most recent first)" do
         author_1 = Author.create!(name: 'Antonio', age: 1, alive: false)
         author_2 = Author.create!(name: 'Larry', age: 2, alive: true)
@@ -99,5 +108,34 @@ RSpec.describe 'Author Index Page' do
         expect(page).to have_content("Larry")
         expect(page).to_not have_content("Cassandra")
     end
+
+    it "has a link that sorts authors by number of books highest to lowest" do
+        author_3 = Author.create!(name: "Cat", age: 5, alive: false)
+        author_2 = Author.create!(name: "Boots", age: 5, alive: false)
+        author_1 = Author.create!(name: "Apu", age: 5, alive: false)
+        book_1 = author_1.books.create!(title: 'Lala Land', page_count: 100, fiction: true)
+        book_2 = author_2.books.create!(title: 'Volcano Island', page_count: 200, fiction: false)
+        book_3 = author_2.books.create!(title: 'Cool Island', page_count: 300, fiction: false)
+        book_4 = author_3.books.create!(title: 'Lala Land 2', page_count: 100, fiction: true)
+        book_5 = author_3.books.create!(title: 'Volcano Island 2', page_count: 200, fiction: false)
+        book_6 = author_3.books.create!(title: 'Cool Island 2', page_count: 300, fiction: false)
+        visit "/authors"
+        expect('Apu').to appear_before('Boots')
+        expect('Boo').to appear_before('Cat')
+        click_link "Order Authors By Book Count"
+        expect(current_path).to eq("/authors")
+        expect('Cat').to appear_before('Boots')
+        expect('Boo').to appear_before('Apu')
+        within "#author-Apu" do
+            expect(page).to have_content("Book Count: 1") 
+        end
+        within "#author-Boots" do
+            expect(page).to have_content("Book Count: 2") 
+        end
+        within "#author-Cat" do
+            expect(page).to have_content("Book Count: 3") 
+        end
+    end
+    
     
 end
