@@ -11,8 +11,19 @@ class Author < ApplicationRecord
     end
 
     def self.order_book_count
-        all.sort { |a, b| b.books.count <=> a.books.count   }    
-    end
+        
+        # binding.pry
+        
+        # I know this is ruby :(
+        # all.sort { |a, b| b.books.count <=> a.books.count   } 
+        Author.find_by_sql(
+        "SELECT * FROM authors
+        LEFT OUTER JOIN
+        (select author_id, count(*) as book_count from books group by author_id)as tmp_count on(id = author_id)
+        ORDER BY COALESCE(book_count,0) desc;")  
+        
+        # left_joins(:books).group(:id).order('COUNT(books.id) DESC')
+     end
     
 
     def book_count

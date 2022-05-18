@@ -125,7 +125,7 @@ RSpec.describe 'Author Index Page' do
         click_link "Order Authors By Book Count"
         expect(current_path).to eq("/authors")
         expect('Cat').to appear_before('Boots')
-        expect('Boo').to appear_before('Apu')
+        expect('Boots').to appear_before('Apu')
         within "#author-Apu" do
             expect(page).to have_content("Book Count: 1") 
         end
